@@ -17,6 +17,7 @@ const io = socketio(server, {
     origin: "https://chat-app-7.netlify.app",
     methods: ["GET", "POST"],
   },
+  noServer: true,
 });
 
 io.on("connection", (socket) => {
