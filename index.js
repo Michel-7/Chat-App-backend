@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 const router = require("./router");
 
 const app = express();
-app.use(cors);
+app.use(cors());
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
@@ -47,10 +47,6 @@ io.on("connection", (socket) => {
     const user = getUser(socket.id);
 
     io.to(user.room).emit("message", { user: user.name, text: message });
-    // io.to(user.room).emit("roomData", {
-    //   room: user.room,
-    //   users: getUsersInRoom(user.room),
-    // });
 
     callback();
   });
